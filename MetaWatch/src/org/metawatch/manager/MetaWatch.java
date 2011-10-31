@@ -42,16 +42,36 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MetaWatch extends Activity {
 
 	public static final String TAG = "MetaWatch";
+	private ListView mainLV;
+	private String mainLVItems[]={"Last Text","Fake Call","RSS Feed","E-mail"};
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        mainLV=(ListView)findViewById(R.id.mainListView);
+        mainLV.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1 , mainLVItems));
+        
+        mainLV.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                int position, long id) {
+              // When clicked, show a toast with the TextView text
+              Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
+                  Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 	@Override
