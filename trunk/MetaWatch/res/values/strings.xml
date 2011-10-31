@@ -31,4 +31,8 @@
     
     <string name="settings_Other">Other</string>
     
+    <string name="FakeCallTitle">Fake Call</string>
+    
+    <string name="LastTextTitle">Last Text</string>
+    
 </resources>

@@ -55,7 +55,11 @@ public class MetaWatch extends Activity {
 
 	public static final String TAG = "MetaWatch";
 	private ListView mainLV;
-	private String mainLVItems[]={"Last Text","Fake Call","RSS Feed","E-mail"};
+	private static final String MAIN_ITEM1 = "Last Text";
+	private static final String MAIN_ITEM2 = "Fake Call";
+	private static final String MAIN_ITEM3 = "RSS Feed";
+	private static final String MAIN_ITEM4 = "E-mail";
+	private String mainLVItems[]={MAIN_ITEM1,MAIN_ITEM2,MAIN_ITEM3,MAIN_ITEM4};
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,9 +71,19 @@ public class MetaWatch extends Activity {
         mainLV.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                 int position, long id) {
-              // When clicked, show a toast with the TextView text
-              Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-                  Toast.LENGTH_SHORT).show();
+            	
+            	String item = (String) ((TextView) view).getText();
+            	
+            	if(item.equals(MAIN_ITEM1))
+            	{
+            		setContentView(R.layout.lasttext);
+            	} else if(item.equals(MAIN_ITEM2))
+            	{
+            		setContentView(R.layout.fakecall);
+            	}
+            	
+            	// When clicked, show a toast with the TextView text
+            	//Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
             }
         });
     }
