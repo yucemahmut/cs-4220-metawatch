@@ -36,6 +36,7 @@ import org.metawatch.manager.MetaWatchService.Preferences;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,16 +56,19 @@ public class MetaWatch extends Activity {
 
 	public static final String TAG = "MetaWatch";
 	private ListView mainLV;
+	Context context;
 	private static final String MAIN_ITEM1 = "Last Text";
 	private static final String MAIN_ITEM2 = "Fake Call";
 	private static final String MAIN_ITEM3 = "RSS Feed";
 	private static final String MAIN_ITEM4 = "E-mail";
 	private String mainLVItems[]={MAIN_ITEM1,MAIN_ITEM2,MAIN_ITEM3,MAIN_ITEM4};
+	MetaWatch CurrAct = this;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        context = this;
         mainLV=(ListView)findViewById(R.id.mainListView);
         mainLV.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1 , mainLVItems));
         
@@ -76,10 +80,19 @@ public class MetaWatch extends Activity {
             	
             	if(item.equals(MAIN_ITEM1))
             	{
-            		setContentView(R.layout.lasttext);
-            	} else if(item.equals(MAIN_ITEM2))
+            		startActivity(new Intent(context, LastText.class));
+            	} 
+            	else if(item.equals(MAIN_ITEM2))
             	{
-            		setContentView(R.layout.fakecall);
+            		startActivity(new Intent(context, FakeCall.class));
+            	} 
+            	else if(item.equals(MAIN_ITEM3))
+            	{
+            		startActivity(new Intent(context, RSS.class));
+            	} 
+            	else if(item.equals(MAIN_ITEM4))
+            	{
+            		startActivity(new Intent(context, Email.class));
             	}
             	
             	// When clicked, show a toast with the TextView text
