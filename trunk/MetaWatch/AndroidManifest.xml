@@ -102,6 +102,10 @@
         <activity android:name="org.metawatch.manager.Test" 
                   android:launchMode="singleTask">
         </activity>
+        <activity android:launchMode="singleTask" android:name="org.metawatch.manager.LastText"></activity>
+        <activity android:launchMode="singleTask" android:name="org.metawatch.manager.FakeCall"></activity>
+        <activity android:launchMode="singleTask" android:name="org.metawatch.manager.RSS"></activity>
+        <activity android:launchMode="singleTask" android:name="org.metawatch.manager.Email"></activity>
 
     </application>
 </manifest>
