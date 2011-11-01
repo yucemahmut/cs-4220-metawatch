@@ -35,4 +35,12 @@
     
     <string name="LastTextTitle">Last Text</string>
     
+    <string name="LastTextAddTitle">Add a new response</string>
+    
+    <string name="LastTextDelItem">Delete a response (Provide the number of the response)</string>
+    
+    <string name="LastTextAddBut">Add</string>
+    
+    <string name="LastTextDelBut">Delete</string>
+    
 </resources>
