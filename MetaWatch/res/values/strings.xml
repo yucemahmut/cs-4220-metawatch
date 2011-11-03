@@ -43,4 +43,12 @@
     
     <string name="LastTextDelBut">Delete</string>
     
+    <string name="FakeCallNameTitle">Name:</string>
+    
+    <string name="FakeCallPhone">Phone Number:</string>
+    
+    <string name="FakeCallSave">Save</string>
+    
+    <string name="FakeCallName">Name:</string>
+    
 </resources>
