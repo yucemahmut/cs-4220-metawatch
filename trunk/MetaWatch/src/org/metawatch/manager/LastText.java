@@ -24,7 +24,7 @@ public class LastText extends Activity
 {	
 	SQLiteDatabase db;
 	final String CREATE_TABLE_LASTTEXT =
-        	"CREATE TABLE LastText ("
+        	"CREATE TABLE IF NOT EXISTS LastText ("
         	+ "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
         	+ "location INTEGER,"
         	+ "name TEXT);";
@@ -43,11 +43,11 @@ public class LastText extends Activity
         	db.setVersion(1);
             db.setLocale(Locale.getDefault());
             db.setLockingEnabled(true);
-            if(db.findEditTable("LastText") == null)
-            	db.execSQL(CREATE_TABLE_LASTTEXT);
+            db.execSQL(CREATE_TABLE_LASTTEXT);
         }
 
         //Find the last current location
+        
         Cursor cur = db.query("LastText", null, null, null, null, null, null);
         lastLoc = 0;
         cur.moveToNext();
@@ -102,6 +102,12 @@ public class LastText extends Activity
         });
     }
 	
+	@Override
+    protected void onStop(){
+       super.onStop();
+       db.close();
+    }
+	
 	private void InsertRecords(int location, String response)
 	{
 		ContentValues values = new ContentValues();
@@ -134,4 +140,6 @@ public class LastText extends Activity
 		ListView lv=(ListView)findViewById(R.id.LastTextList);
         lv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1 , items));
 	}
+	
+	
 }
