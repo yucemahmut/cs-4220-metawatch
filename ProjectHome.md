@@ -1,0 +1,1 @@
+CS 4220 Embedded/Real-Time systems project involving metawatch portable wristwatch
